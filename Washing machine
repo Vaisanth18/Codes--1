@@ -1,0 +1,36 @@
+for   (sensors.getTempCByIndex(0);  settemp > sensors.getTempCByIndex(0); )    // if the temperature exceeds your chosen settemp
+    {
+        digitalWrite (warmWater, 1); // turn on the heating
+
+    digitalWrite (MotorCCW, 1);     // turn on the motor
+      delay(timer);
+    digitalWrite (MotorCCW, 0);     // turn off the motor
+      delay(timer);
+    digitalWrite (MotorCW, 1);        // turn on the motor
+      delay(timer);
+    digitalWrite (MotorCW, 0);        // turn off the motor
+      delay(timer);
+ 
+         sensors.requestTemperatures();            // Send the command to get temperature readings
+         delay(250);
+         lcd.setCursor (0,1);                            // set cursor to 0,0
+         lcd.print("# Water Heating.#"); 
+         lcd.setCursor (0,2);
+         lcd.print(" Tag Temp is:");
+         lcd.print(sensors.getTempCByIndex(0));
+         lcd.print ("C ");
+         lcd.setCursor (0,3);              // set the cursor to 0,1
+         lcd.print ("  Set To: ");            // Print set to and your ideal temperature in f
+         lcd.print (settemp);
+         lcd.print ('C');
+         
+    digitalWrite (MotorCCW, 1);     // turn on the motor
+      delay(timer);
+    digitalWrite (MotorCCW, 0);     // turn off the motor
+      delay(timer);
+    digitalWrite (MotorCW, 1);        // turn on the motor
+      delay(timer);
+    digitalWrite (MotorCW, 0);        // turn off the motor
+      delay(timer);
+               
+   }
